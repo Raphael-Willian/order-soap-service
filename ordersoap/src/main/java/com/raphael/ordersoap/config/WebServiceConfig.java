@@ -29,6 +29,7 @@ public class WebServiceConfig {
         wsdl.setPortTypeName("OrderPort");
         wsdl.setLocationUri("/ws");
         wsdl.setTargetNamespace("http://raphael.com/ordersoap");
+        wsdl.setSchema(schema);
         return wsdl;
     }
 
@@ -37,4 +38,10 @@ public class WebServiceConfig {
         return new SimpleXsdSchema(new ClassPathResource("xsd/order.xsd"));
     }
 
+    @Bean
+    public org.springframework.oxm.jaxb.Jaxb2Marshaller marshaller() {
+        org.springframework.oxm.jaxb.Jaxb2Marshaller marshaller = new org.springframework.oxm.jaxb.Jaxb2Marshaller();
+        marshaller.setContextPath("com.raphael.ordersoap");
+        return marshaller;
+    }
 }
