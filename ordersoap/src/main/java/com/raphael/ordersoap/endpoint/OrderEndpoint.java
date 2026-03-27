@@ -1,5 +1,7 @@
 package com.raphael.ordersoap.endpoint;
 
+import com.raphael.ordersoap.GetOrderRequest;
+import com.raphael.ordersoap.GetOrderResponse;
 import com.raphael.ordersoap.service.OrderService;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -19,6 +21,18 @@ public class OrderEndpoint {
         this.service = service;
     }
 
+    //create endpoint to getOrder
+    @PayloadRoot(namespace = NAMESPACE, localPart = "getOrderRequest")
+    @ResponsePayload
+    public GetOrderResponse getOrder(@RequestPayload GetOrderRequest request) {
+        GetOrderResponse response =  new GetOrderResponse();
+
+        String result =  service.getOrder(request.getProduct());
+
+        response.setMessage(result);
+
+        return response;
+    }
 
     @PayloadRoot(namespace = NAMESPACE, localPart = "CreateOrderRequest")
     @ResponsePayload
@@ -31,8 +45,6 @@ public class OrderEndpoint {
         response.setMessage(result);
 
         return response;
-
-
 
     }
 }

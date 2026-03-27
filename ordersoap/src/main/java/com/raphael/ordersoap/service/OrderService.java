@@ -10,5 +10,9 @@ public class OrderService {
         return "Pedido criado: " + product + " x " + quantity;
     }
 
+    public String getOrder(String product) {
+        return "Pedido: " + product;
+    }
+
 
 }

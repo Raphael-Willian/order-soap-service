@@ -11,8 +11,24 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="getOrderRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name = "product" type = "xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <!-- RESPONSE -->
     <xs:element name="createOrderResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOrderResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="message" type="xs:string"/>
